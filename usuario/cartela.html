@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartela de Bingo</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="cartela" id="cartela">
+  <!-- Linha 1 -->
+  <div class="linha">
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+  </div>
+  <!-- Linha 2 -->
+  <div class="linha">
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+  </div>
+  <!-- Linha 3 -->
+  <div class="linha">
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula central">
+        <img src="icone/biblia logo.png" alt="Bíblia" class="imagem">
+      </div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+  </div>
+  <!-- Linha 4 -->
+  <div class="linha">
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+  </div>
+  <!-- Linha 5 -->
+  <div class="linha">
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+    <div class="celula"></div>
+  </div>
+</div>
+
+<script>
+// Função para gerar números aleatórios sem repetição
+function gerarNumerosAleatorios(totalNumeros) {
+  let numeros = [];
+  while (numeros.length < totalNumeros) {
+    let numero = Math.floor(Math.random() * 75) + 1;
+    if (!numeros.includes(numero)) {
+      numeros.push(numero);
+    }
+  }
+  return numeros;
+}
+
+// Função para preencher as células com números aleatórios
+function preencherCartela() {
+  let numeros = gerarNumerosAleatorios(24); // Gerar 24 números aleatórios (excluindo o central)
+  let cartela = document.getElementById('cartela');
+  let celulas = cartela.querySelectorAll('.celula');
+
+  // Preencher as células com números aleatórios
+  let index = 0;
+  celulas.forEach(function(celula) {
+    if (!celula.classList.contains('central')) {
+      celula.textContent = numeros[index];
+      index++;
+    }
+  });
+}
+
+// Chamar a função para preencher a cartela ao carregar a página
+preencherCartela();
+</script>
+</body>
+</html>
